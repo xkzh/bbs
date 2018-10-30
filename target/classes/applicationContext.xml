@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:task="http://www.springframework.org/schema/task" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+           http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+
+	<!-- 启用基于注解的bean管理和IOC（DI） -->
+	<context:component-scan base-package="com.xk.yduoduo.controller">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+	<!-- 读取classPath中的properties文件 -->
+	<context:property-placeholder location="classpath:jdbc.properties" />
+
+
+	<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+	  <!-- 核心线程数 -->	 
+	  <property name="corePoolSize" value="${task.core_pool_size}" />
+	  <!-- 最大线程数 -->  
+	  <property name="maxPoolSize" value="${task.max_pool_size}" />
+	  <!-- 队列最大长度 -->
+	  <property name="queueCapacity" value="${task.queue_capacity}" />
+	  <!-- 线程池维护线程所允许的空闲时间，默认为60s -->
+	  <property name="keepAliveSeconds" value="${task.keep_alive_seconds}" />
+	</bean>
+
+	<!-- 注解式 -->
+	<task:annotation-driven />
+
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" 
+  init-method="init" destroy-method="close"> 
+  <property name="driverClassName" value="${jdbc.driver}" /> 
+  <property name="url" value="${jdbc.url}" /> 
+  <property name="username" value="${jdbc.username}" /> 
+  <property name="password" value="${jdbc.password}" /> 
+  <!-- 配置初始化大小、最小、最大 --> 
+  <property name="initialSize" value="1" /> 
+  <property name="minIdle" value="1" /> 
+  <property name="maxActive" value="10" />
+  <!-- 配置获取连接等待超时的时间 --> 
+  <property name="maxWait" value="10000" />
+  <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 --> 
+  <property name="timeBetweenEvictionRunsMillis" value="60000" />
+  <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 --> 
+  <property name="minEvictableIdleTimeMillis" value="300000" />
+  <property name="testWhileIdle" value="true" />
+  <!-- 这里建议配置为TRUE，防止取到的连接不可用 --> 
+  <property name="testOnBorrow" value="true" /> 
+  <property name="testOnReturn" value="false" />
+  <!-- 打开PSCache，并且指定每个连接上PSCache的大小 --> 
+  <property name="poolPreparedStatements" value="true" /> 
+  <property name="maxPoolPreparedStatementPerConnectionSize" 
+   value="20" />
+  <!-- 这里配置提交方式，默认就是TRUE，可以不用配置 -->
+  <property name="defaultAutoCommit" value="true" />
+  <!-- 验证连接有效与否的SQL，不同的数据配置不同 --> 
+  <property name="validationQuery" value="select 1 " /> 
+  <property name="filters" value="stat" /> 
+  <property name="proxyFilters"> 
+   <list> 
+    <ref bean="logFilter" /> 
+   </list> 
+  </property> 
+ </bean>
+
+ <bean id="logFilter" class="com.alibaba.druid.filter.logging.Slf4jLogFilter"> 
+  <property name="statementExecutableSqlLogEnable" value="false" /> 
+ </bean>
+
+	<!-- 配置基于注解的事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<!-- Hibernate SessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />				<!-- 数据源 -->
+		<property name="packagesToScan" value="com.xk.yduoduo.bean" />	<!-- 自动扫描实体类 -->
+		<property name="hibernateProperties">						<!-- Hibernate相关属性配置 -->
+			<props>
+				<!--<prop key="hibernate.dialect">im.ldd.util.MyISAMDialect</prop> 数据库方言 
+					mysql -->
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop> <!-- 数据库方言 mysql -->
+				<prop key="hibernate.show_sql">true</prop>								<!-- 显示sql语句 -->
+				<!-- 自动建表 -->
+				<prop key="hibernate.hbm2ddl.auto">update</prop>					<!-- 实体类发生变化时，自动更新数据库，可自动建表 -->
+				<!-- 开启查询缓存 -->
+				<!-- 启动"查询缓存"如果想缓存使用findall()、list()、Iterator()、createCriteria()、createQuery()等方法获得的数据结果集,必须配置此项-->
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<!-- 开启二级缓存 -->
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<!-- 设置二级缓存插件EHCache的Provider类--> 
+				<!--
+				TODO 2018-10-4 17:27:57  类无法引进
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>-->
+				<!-- 高速缓存提供程序 --> 
+				<!-- 由于spring也使用了Ehcache, 保证双方都使用同一个缓存管理器 -->
+				<prop key="hibernate.cache.region.factory_class">
+				     org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
+				</prop>
+				<!-- 强制Hibernate以更人性化的格式将数据存入二级缓存 -->  
+				<prop key="hibernate.cache.use_structured_entries">true</prop>
+				<!-- Hibernate将收集有助于性能调节的统计数据 -->  
+				<prop key="hibernate.generate_statistics">true</prop>
+			</props>
+		</property>
+		
+	</bean>
+	<!-- Hibernate 事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" /> <!-- 注入sessionFactory -->
+	</bean>
+	<!-- cacheManager, 指定ehcache.xml的位置 --> 
+	<!-- <bean id="cacheManagerEhcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation">
+        	<value>classpath:ehcache.xml</value>
+        </property>
+        <property name="shared" value="true"/>
+    </bean> -->
+	<!-- 配置基于注解的事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<!-- 基于注解的aop -->
+	<aop:aspectj-autoproxy />
+	
+	
+  
+</beans>
