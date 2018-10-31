@@ -10,7 +10,7 @@
            http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
 
 	<!-- 启用基于注解的bean管理和IOC（DI） -->
-	<context:component-scan base-package="com.xk.yduoduo.controller">
+	<context:component-scan base-package="com.xk.bbs.controller">
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
@@ -79,12 +79,12 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />				<!-- 数据源 -->
-		<property name="packagesToScan" value="com.xk.yduoduo.bean" />	<!-- 自动扫描实体类 -->
+		<property name="packagesToScan" value="com.xk.bbs.bean" />	<!-- 自动扫描实体类 -->
 		<property name="hibernateProperties">						<!-- Hibernate相关属性配置 -->
 			<props>
 				<!--<prop key="hibernate.dialect">im.ldd.util.MyISAMDialect</prop> 数据库方言 
 					mysql -->
-				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop> <!-- 数据库方言 mysql -->
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop> <!-- 数据库方言 mysql -->
 				<prop key="hibernate.show_sql">true</prop>								<!-- 显示sql语句 -->
 				<!-- 自动建表 -->
 				<prop key="hibernate.hbm2ddl.auto">update</prop>					<!-- 实体类发生变化时，自动更新数据库，可自动建表 -->

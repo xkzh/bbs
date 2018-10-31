@@ -1,6 +1,6 @@
 package com.xk.bbs.service.impl;
 
-import com.xk.bbs.bean.Content;
+import com.xk.bbs.bean.example.Content;
 import com.xk.bbs.dao.BaseDaoImpl;
 import com.xk.bbs.service.ContentService;
 import org.springframework.stereotype.Service;

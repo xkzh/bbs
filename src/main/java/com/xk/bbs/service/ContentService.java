@@ -1,7 +1,7 @@
 package com.xk.bbs.service;
 
 
-import com.xk.bbs.bean.Content;
+import com.xk.bbs.bean.example.Content;
 import com.xk.bbs.dao.BaseDao;
 
 public interface ContentService extends BaseDao<Content> {

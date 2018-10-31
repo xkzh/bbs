@@ -84,7 +84,7 @@
 			<props>
 				<!--<prop key="hibernate.dialect">im.ldd.util.MyISAMDialect</prop> 数据库方言 
 					mysql -->
-				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop> <!-- 数据库方言 mysql -->
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop> <!-- 数据库方言 mysql -->
 				<prop key="hibernate.show_sql">true</prop>								<!-- 显示sql语句 -->
 				<!-- 自动建表 -->
 				<prop key="hibernate.hbm2ddl.auto">update</prop>					<!-- 实体类发生变化时，自动更新数据库，可自动建表 -->

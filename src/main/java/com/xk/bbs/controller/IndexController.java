@@ -3,8 +3,8 @@ package com.xk.bbs.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.xk.bbs.bean.Content;
-import com.xk.bbs.bean.ContentJson;
+import com.xk.bbs.bean.example.Content;
+import com.xk.bbs.bean.example.ContentJson;
 import com.xk.bbs.service.ContentService;
 import com.xk.bbs.util.HttpUtil;
 import org.springframework.stereotype.Controller;
@@ -31,9 +31,7 @@ public class IndexController {
 	@RequestMapping(value="/index")
 	@ResponseBody
 	public String index() {
-
-
-		return "hello world!";
+		return "这里是  IndexController  的 index() ";
 	}
 	
 	
