@@ -39,19 +39,36 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		clazz = (Class<?>) types[0];
 	}
 
+	/**
+	 * 保存数据
+	 * @param entity
+	 */
 	public void save(T entity) {
 		getSession().save(entity);
 	}
 
+	/**
+	 * 更新数据
+	 * @param entity
+	 */
 	public void update(T entity) {
 		getSession().update(entity);
 	}
 
+	/**
+	 * 删除数据
+	 * @param id
+	 */
 	public void delete(Long id) {
 		Object obj = getSession().get(clazz, id);
 		getSession().delete(obj);
 	}
 
+	/**
+	 * 根据id查询实体
+	 * @param id
+	 * @return
+	 */
 	public T getById(Long id) {
 		if (id == null) {
 			return null;
@@ -59,6 +76,11 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		return (T) getSession().get(clazz, id);
 	}
 
+	/**
+	 * 根据Id集合查询
+	 * @param ids
+	 * @return
+	 */
 	public List<T> getByIds(Long[] ids) {
 		if (ids == null || ids.length == 0) {
 			return Collections.EMPTY_LIST; // 返回空集合
@@ -69,6 +91,10 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 				.setParameterList("ids", ids).list();
 	}
 
+	/**
+	 * 查询所有的数据
+	 * @return
+	 */
 	public List<T> findAll() {
 		return getSession().createQuery("FROM " + clazz.getSimpleName()).list();
 	}

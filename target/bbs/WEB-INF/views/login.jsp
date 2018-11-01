@@ -87,11 +87,9 @@ body {
 					password:$("#password").val()
 				},
 				success:function(data){
-                    console.log("JSON.stringify(data):   "+JSON.stringify(data));
                     if(data.code == 200){
 						// 登录成功
-                        tip(data.msg)
-                        location.href = getRootPath() + "/home";
+                        location.href = getRootPath() + "/home?p=1";
 					}else if(data.code == 1001){
                         tip(data.msg)
                         password:$("#password").val("")

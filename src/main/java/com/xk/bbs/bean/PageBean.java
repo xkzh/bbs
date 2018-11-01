@@ -1,6 +1,8 @@
 package com.xk.bbs.bean;
 
 
+import com.google.gson.Gson;
+
 import java.util.List;
 
 public class  PageBean<T> {
@@ -116,4 +118,8 @@ public class  PageBean<T> {
 		this.endPageIndex = endPageIndex;
 	}
 
+	@Override
+	public String toString() {
+		return new Gson().toJson(this);
+	}
 }
