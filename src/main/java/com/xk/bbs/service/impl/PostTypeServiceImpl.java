@@ -15,4 +15,10 @@ public class PostTypeServiceImpl extends BaseDaoImpl<PostType> implements PostTy
     public List<PostType> findAllPostType() {
         return findAll();
     }
+
+    @Override
+    public PostType findPostTypeByAlias(String alias) {
+        // .uniqueResult()  这个不能少，否则查不到结果
+        return (PostType) getSession().createQuery("from PostType where alias = ?0 ").setParameter(0,alias).uniqueResult();
+    }
 }

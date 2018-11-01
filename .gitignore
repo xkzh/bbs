@@ -6,4 +6,5 @@
 
 /logs/
 /**/*/rebel.xml
-/hunt-system/target/
+*.war
+.idea/workspace.xml

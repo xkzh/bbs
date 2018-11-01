@@ -16,7 +16,7 @@ public class PostServiceImpl extends BaseDaoImpl<Post> implements PostService {
     @Override
     public PageBean findAllPost(int page) {
         // from Post p left join  p.user left join p.postType
-        // hibernate 已经给你做好了级联查询，不用你再做了
+        // hibernate 已经给你做好了级联查询，不用你再做了，hql关键字查询怎么写，比如搜索接口
         return getPageBean(page,"from Post",new Object[]{});
     }
 }

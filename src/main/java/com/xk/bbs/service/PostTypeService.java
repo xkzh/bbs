@@ -9,5 +9,5 @@ public interface PostTypeService extends BaseDao<PostType> {
 
     List<PostType> findAllPostType();
 
-
+    PostType findPostTypeByAlias(String alias);
 }
