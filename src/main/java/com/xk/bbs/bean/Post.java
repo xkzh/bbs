@@ -1,5 +1,7 @@
 package com.xk.bbs.bean;
 
+import com.google.gson.Gson;
+
 import javax.persistence.*;
 
 @Table(name = "t_post")
@@ -17,16 +19,10 @@ public class Post {
 	private String lastcommentstime;
 	private int likenum;
 	private boolean toppost;
-//	private int user_id;
-//	private int type_id;
 	private boolean enable;
-//    @OneToOne(optional = false,cascade = CascadeType.REFRESH)
-//    @JoinTable(joinColumns = {@JoinColumn(name = "user_id")})
     @OneToOne
     @JoinColumn(name="user_id",unique=true)
 	private User user; // 一个帖子对应一个作者
-//	@OneToOne(optional = false,cascade = CascadeType.REFRESH)
-//    @JoinTable(joinColumns = {@JoinColumn(name = "type_id")})
     @OneToOne
     @JoinColumn(name="type_id",unique=true)
 	private PostType postType; // 一个帖子对应一个类型
@@ -114,5 +110,8 @@ public class Post {
 		this.postType = postType;
 	}
 
-
+	@Override
+	public String toString() {
+		return new Gson().toJson(this);
+	}
 }

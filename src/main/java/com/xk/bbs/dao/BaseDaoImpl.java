@@ -73,6 +73,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		if (id == null) {
 			return null;
 		}
+		logger.error("getById:   "+clazz);
 		return (T) getSession().get(clazz, id);
 	}
 

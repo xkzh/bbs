@@ -15,7 +15,7 @@
 <div class="container content toolbar">
     <a href="#" class="btn">全部</a>&nbsp;&nbsp;&nbsp;&nbsp;
     <c:forEach items="${typeList }" var = "tl">
-        <a href="${pageContext.request.contextPath}/posttype?t=${tl.alias}" class="nolink">${tl.name}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="${pageContext.request.contextPath}/posttype?t=${tl.alias}&p=1" class="nolink">${tl.name}</a>&nbsp;&nbsp;&nbsp;&nbsp;
     </c:forEach>
 </div>
 
@@ -32,7 +32,7 @@
                     <c:if test="${pl.toppost}">
                         <i class="icon-bookmark-empty" title="置顶"></i>
                     </c:if>
-                    <a href="post.do?id=${pl.id}">${pl.title}</a>
+                    <a href="${pageContext.request.contextPath}/postdetail?id=${pl.id}">${pl.title}</a>
                 </h4>
               <small>
                     <a href="#">discuss(${pl.commentsnum})</a> / <a href="/account-info.do?u=${pl.user.nickname}">@${pl.user.nickname}</a>
@@ -54,18 +54,18 @@
                         <li class="disabled"><a href="javascript:;" >Prev</a></li>
                     </c:when>
                     <c:otherwise>
-                        <li><a href="${pageContext.request.contextPath}/home.do?p=${pageBean.currentPage-1}">Prev</a></li>
+                        <li><a href="${pageContext.request.contextPath}/home?p=${pageBean.currentPage-1}">Prev</a></li>
                     </c:otherwise>
                 </c:choose>
                 <c:forEach items="${listNum}" var="p">
-                    <li><a href="${pageContext.request.contextPath}/home.do?p=${p }">${p}</a></li>
+                    <li><a href="${pageContext.request.contextPath}/home?p=${p }">${p}</a></li>
                 </c:forEach>
                 <c:choose>
                 <c:when test="${pageBean.currentPage==pageBean.pageCount}">
                 <li class="disabled"><a href="javascript:;">Next</a>
                     </c:when>
                     <c:otherwise>
-                <li><a href="${pageContext.request.contextPath}/home.do?p=${pageBean.currentPage+1}">Next</a>
+                <li><a href="${pageContext.request.contextPath}/home?p=${pageBean.currentPage+1}">Next</a>
                     </c:otherwise>
                     </c:choose>
             </ul>
