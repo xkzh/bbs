@@ -46,8 +46,8 @@
 				<form id="fm" action="comment.do" method="post">
 					<fieldset>
 						<h4>我要回复</h4>
-						<input type="hidden" name="postid" value="${post.id}"/>
-						<input type="hidden" name="content" id = "content"/>
+						<input id = "postid" type="hidden" name="postid" value="${post.id}"/>
+						<input id = "content" type="hidden" name="content" />
 						<textarea id="md" class="span10" style="resize:none;" rows="5"></textarea><br/>
 						<button type="button" class="btn sender">回复</button> 
 						<span class="help-inline">支持<a href="http://markdown.tw/" target="_blank">MarkDown</a>语法</span>
@@ -66,7 +66,7 @@
 		<c:otherwise>
 			<div class="comments">
 				<c:forEach items="${commentList}" var="c">
-						<c:if test="${c.enable || sessionScope.curr_user.id == c.userId}">							
+						<c:if test="${c.enable || sessionScope.curr_user.id == c.user.id}">
 						<div class="comment">
 							<div class="cm-author">
 								<img class="img-circle" src="http://www.gravatar.com/avatar/${c.user.pic }?s=30&d=mm&r=g" alt="">
@@ -100,6 +100,7 @@
 	<script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
 	<script src="${pageContext.request.contextPath}/static/js/jquery.autosize-min.js"></script>
 	<script src="${pageContext.request.contextPath}/static/js/markdown.js"></script>
+	<script src="${pageContext.request.contextPath}/static/js/common.js"></script>
 	<script>
 		$(function(){
 			$('#content').autosize(); 
@@ -111,7 +112,50 @@
 				}else{
 					var md = markdown.toHTML(src);
 					$("#content").val(md);
-					$("#fm").submit();
+					// $("#fm").submit();
+					// TODO 执行ajax操作
+					$.ajax({
+						url:getRootPath()+"/comment",
+						type:"post",
+						dataType:"json",
+						data:{
+							postId:$("#postid").val(),
+                            content:$("#content").val()
+						},
+						success:function(data){
+						    console.log("data:  "+JSON.stringify(data));
+							if(data.code == 200){
+                                content:$("#content").val("");
+                                console.log("data.data.user.pic:  "+data.data.user.pic);
+                                console.log("data.user.nickname:  "+data.data.user.nickname);
+                                console.log("data.data.createtime:  "+data.data.createtime);
+                                console.log("data.data.post_id:  "+data.data.post_id);
+                                console.log("data.data.id:  "+data.data.id);
+                                var html = "<div class=\"comment\">\n" +
+                                    "\t\t\t\t\t\t\t<div class=\"cm-author\">\n" +
+                                    "\t\t\t\t\t\t\t\t<img class=\"img-circle\" src=\"http://www.gravatar.com/avatar/"+data.data.user.pic+"?s=30&d=mm&r=g\" alt=\"\">\n" +
+                                    "\t\t\t\t\t\t\t\t&nbsp;&nbsp;\n" +
+                                    "\t\t\t\t\t\t\t\t<a href=\"/account-info.do?u="+data.data.user.nickname+"\">@"+data.data.user.nickname+"</a>\n" +
+                                    "\t\t\t\t\t\t\t\t&nbsp;&nbsp;\n" +
+                                    "\t\t\t\t\t\t\t\t# "+data.data.createtime+"\n" +
+                                    "\t\t\t\t\t\t\t\t&nbsp;&nbsp;\n" +
+                                    "\t\t\t\t\t\t\t\t<a href=\"javascript:;\" class=\"hide replay\" ref=\""+data.data.user.nickname+"\"><i class=\"icon-share-alt\"></i> 回复</a>\n" +
+                                    "\t\t\t\t\t\t\t\t&nbsp;&nbsp;\n" +
+                                    "\t\t\t\t\t\t\t\t\n" +
+                                    "\t\t\t\t\t\t\t\t<c:if test="${sessionScope.curr_user.role =='admin'}">\n" +
+                                    "\t\t\t\t\t\t\t\t<a href=\"commentEnable.do?pid="+data.data.post_id+"&cid=+"+data.data.id+"\" class=\"hide del\" ref=\"101\"><i class=\"icon-eye-close\"></i> 屏蔽此内容</a>\n" +
+                                    "\t\t\t\t\t\t\t\t</c:if>\n" +
+                                    "\t\t\t\t\t\t\t</div>\n" +
+                                    "\t\t\t\t\t\t\t<div class=\"cm-content\">\n" +
+                                    "\t\t\t\t\t\t\t\t<p>"+data.data.content +"</p>\n" +
+                                    "\t\t\t\t\t\t\t</div>\n" +
+                                    "\t\t\t\t\t\t</div>";
+								$(".comments").prepend(html);
+							}else{
+
+							}
+						}
+					});
 				}
 			});
 

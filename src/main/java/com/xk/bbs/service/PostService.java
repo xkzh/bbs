@@ -10,6 +10,6 @@ public interface PostService extends BaseDao<Post> {
 
     PageBean findPostByAlias(int page,int typeId);
 
-    Post findPostById(Long id);
+    Post findPostById(Object id);
 
 }

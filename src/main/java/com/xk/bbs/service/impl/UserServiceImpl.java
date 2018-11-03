@@ -23,4 +23,18 @@ public class UserServiceImpl  extends BaseDaoImpl<User> implements UserService {
                 .setFirstResult(0)
                 .setMaxResults(1).uniqueResult();
     }
+
+    @Override
+    public User findUserById(String id) {
+        return (User)getSession().createQuery("from User where ic = ?0")
+                .setParameter(0,id)
+                .uniqueResult();
+    }
+
+    @Override
+    public User findUserByNickname(String nickName) {
+        return (User)getSession().createQuery("from User where nickname = ?0")
+                .setParameter(0,nickName)
+                .uniqueResult();
+    }
 }

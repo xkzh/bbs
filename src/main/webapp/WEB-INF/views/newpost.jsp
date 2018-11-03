@@ -75,6 +75,16 @@
 				var md = markdown.toHTML(src);
 				$("#content").val(md);
 				// $(".fm").submit();
+
+				if($("#title").val() == ""){
+                    tip("请输入标题");
+                    return;
+				}
+                if($("#content").val() == ""){
+                    tip("请输入内容");
+                    return;
+                }
+
 				// 执行ajax方法
 				$.ajax({
 					url:getRootPath()+"/newpost",

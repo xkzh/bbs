@@ -27,8 +27,8 @@
             <file leaf-file-name="login.jsp" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="1200">
-                    <caret line="123" lean-forward="true" selection-start-line="123" selection-end-line="123" />
+                  <state relative-caret-position="200">
+                    <caret line="73" column="29" selection-start-line="73" selection-start-column="29" selection-end-line="73" selection-end-column="29" />
                   </state>
                 </provider>
               </entry>
@@ -43,8 +43,8 @@
       <file leaf-file-name="HomeController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/controller/HomeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="83" column="51" selection-start-line="83" selection-start-column="51" selection-end-line="83" selection-end-column="51" />
+            <state relative-caret-position="571">
+              <caret line="263" lean-forward="true" selection-start-line="263" selection-end-line="263" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -52,25 +52,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PostTypeServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/service/impl/PostTypeServiceImpl.java">
+      <file leaf-file-name="BaseDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/dao/BaseDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="21" column="83" selection-start-line="21" selection-start-column="83" selection-end-line="21" selection-end-column="83" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#431#432#0" expanded="true" />
-                <element signature="e#463#464#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="300">
+              <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PostService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/service/PostService.java">
+      <file leaf-file-name="NotifyService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/service/NotifyService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+            <state relative-caret-position="150">
+              <caret line="6" column="51" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -78,20 +73,74 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BaseResult.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/bean/base/BaseResult.java">
+      <file leaf-file-name="Notify.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/bean/Notify.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
+            <state relative-caret-position="361">
+              <caret line="47" column="5" lean-forward="true" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+              <folding>
+                <element signature="e#580#581#0" expanded="true" />
+                <element signature="e#615#616#0" expanded="true" />
+                <element signature="e#661#662#0" expanded="true" />
+                <element signature="e#682#683#0" expanded="true" />
+                <element signature="e#722#723#0" expanded="true" />
+                <element signature="e#751#752#0" expanded="true" />
+                <element signature="e#780#781#0" expanded="true" />
+                <element signature="e#800#801#0" expanded="true" />
+                <element signature="e#842#843#0" expanded="true" />
+                <element signature="e#869#870#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/controller/LoginController.java">
+      <file leaf-file-name="applicationContext.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="41" column="66" lean-forward="true" selection-start-line="41" selection-start-column="66" selection-end-line="41" selection-end-column="66" />
+            <state relative-caret-position="521">
+              <caret line="85" column="29" lean-forward="true" selection-start-line="85" selection-start-column="29" selection-end-line="85" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PostServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/service/impl/PostServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="358">
+              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/service/impl/UserServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="635">
+              <caret line="33" column="13" lean-forward="true" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="postdetail.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/postdetail.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="140" column="70" lean-forward="true" selection-start-line="140" selection-start-column="70" selection-end-line="140" selection-end-column="70" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Comment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/bean/Comment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -102,47 +151,8 @@
       <file leaf-file-name="newpost.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/newpost.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="90" column="57" lean-forward="true" selection-start-line="90" selection-start-column="57" selection-end-line="90" selection-end-column="57" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="posttype.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/posttype.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="18" column="90" selection-start-line="18" selection-start-column="63" selection-end-line="18" selection-end-column="90" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PostServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/service/impl/PostServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="700">
-              <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1025">
-              <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ContentServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/service/impl/ContentServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="17" column="181" lean-forward="true" selection-start-line="17" selection-start-column="165" selection-end-line="17" selection-end-column="181" />
+            <state relative-caret-position="-1622">
+              <caret line="54" column="4" lean-forward="true" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="82" />
             </state>
           </provider>
         </entry>
@@ -181,6 +191,8 @@
       <find>commentList</find>
       <find>sessionScope</find>
       <find>postId</find>
+      <find>post-content</find>
+      <find>userId</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -193,10 +205,7 @@
         <option value="$PROJECT_DIR$/src/main/resources/log4j.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/jdbc.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/springmvc.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xk/bbs/service/UserService.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xk/bbs/service/impl/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xk/bbs/bean/ResponseCode.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xk/bbs/bean/BaseResult.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xk/bbs/bean/base/BaseResult.java" />
@@ -206,7 +215,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/xk/bbs/bean/PageBean.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/include/footer.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/xk/bbs/bean/PostType.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/xk/bbs/service/PostTypeService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/test.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/xk/bbs/controller/PostTypeController.java" />
@@ -217,19 +225,27 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/xk/bbs/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/include/top.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xk/bbs/service/CommentService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xk/bbs/service/impl/CommentServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xk/bbs/bean/Comment.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xk/bbs/bean/Post.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/postdetail.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/home.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/posttype.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/xk/bbs/util/DateUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xk/bbs/service/PostService.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/newpost.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xk/bbs/controller/HomeController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xk/bbs/service/impl/PostTypeServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/newpost.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/css/style.css" />
+        <option value="$PROJECT_DIR$/src/main/java/com/xk/bbs/service/CommentService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/xk/bbs/service/PostService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/xk/bbs/service/NotifyService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/xk/bbs/service/impl/NotifyServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/xk/bbs/service/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/xk/bbs/service/impl/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xk/bbs/service/impl/PostServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/xk/bbs/bean/Notify.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/xk/bbs/controller/HomeController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/postdetail.jsp" />
       </list>
     </option>
   </component>
@@ -329,6 +345,40 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="xk" type="462c0819:PsiDirectoryNode" />
               <item name="bbs" type="462c0819:PsiDirectoryNode" />
+              <item name="bean" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bbs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bbs" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="xk" type="462c0819:PsiDirectoryNode" />
+              <item name="bbs" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bbs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bbs" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="xk" type="462c0819:PsiDirectoryNode" />
+              <item name="bbs" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bbs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bbs" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="xk" type="462c0819:PsiDirectoryNode" />
+              <item name="bbs" type="462c0819:PsiDirectoryNode" />
               <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -382,8 +432,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.xk.bbs.util" />
       <recent name="com.xk.bbs.bean" />
+      <recent name="com.xk.bbs.util" />
       <recent name="com.xk.bbs.controller" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -536,12 +586,12 @@
       <workItem from="1540948614824" duration="21111000" />
       <workItem from="1541034960874" duration="26390000" />
       <workItem from="1541121376131" duration="24460000" />
-      <workItem from="1541215708123" duration="7551000" />
+      <workItem from="1541215708123" duration="22526000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79821000" />
+    <option name="totallyTimeSpent" value="94796000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -571,16 +621,16 @@
       <window_info id="UI Designer" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39248434" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32985386" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.39561588" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.4874739" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Java Enterprise" order="7" weight="0.32985386" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32985386" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.064718165" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.15240084" />
       <window_info anchor="bottom" id="Spring" order="7" weight="0.32985386" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32985386" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2563966" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15778251" />
       <window_info anchor="bottom" id="Problems" order="8" weight="0.32985386" />
       <window_info anchor="right" id="Bean Validation" order="3" />
       <window_info id="Web" order="2" side_tool="true" />
@@ -614,33 +664,10 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/util/HttpUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="75" column="7" lean-forward="true" selection-start-line="75" selection-start-column="7" selection-end-line="75" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/logback.xml" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/jdbc.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="8" column="26" lean-forward="true" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/springmvc.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7">
           <caret line="17" column="4" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="85" column="29" lean-forward="true" selection-start-line="85" selection-start-column="29" selection-end-line="85" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -693,13 +720,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/dao/BaseDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="109" column="27" selection-start-line="109" selection-start-column="16" selection-end-line="109" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/management/remote/rmi/RMIConnectionImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -711,16 +731,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/service/impl/UserServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="19" column="57" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -829,22 +839,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/bean/Comment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1098#1099#0" expanded="true" />
-            <element signature="e#1119#1120#0" expanded="true" />
-            <element signature="e#1159#1160#0" expanded="true" />
-            <element signature="e#1188#1189#0" expanded="true" />
-            <element signature="e#1177#1178#0" expanded="true" />
-            <element signature="e#1207#1208#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/service/impl/CommentServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -855,37 +849,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/service/CommentService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/home.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
           <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/postdetail.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="8" column="68" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="68" />
         </state>
       </provider>
     </entry>
@@ -926,13 +893,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/newpost.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="90" column="57" lean-forward="true" selection-start-line="90" selection-start-column="57" selection-end-line="90" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/controller/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="257">
@@ -962,10 +922,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/controller/HomeController.java">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="83" column="51" selection-start-line="83" selection-start-column="51" selection-end-line="83" selection-end-column="51" />
+        <state relative-caret-position="725">
+          <caret line="29" column="9" lean-forward="true" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="73" column="29" selection-start-line="73" selection-start-column="29" selection-end-line="73" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="129" column="19" lean-forward="true" selection-start-line="129" selection-start-column="19" selection-end-line="129" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/service/CommentService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -974,35 +955,128 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/service/PostService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        <state relative-caret-position="275">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/service/impl/NotifyServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1200">
-          <caret line="123" lean-forward="true" selection-start-line="123" selection-end-line="123" />
+        <state relative-caret-position="250">
+          <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/service/impl/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="635">
+          <caret line="33" column="13" lean-forward="true" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/service/impl/PostServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
-          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+        <state relative-caret-position="358">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/dao/BaseDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1025">
-          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+        <state relative-caret-position="300">
+          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/service/NotifyService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="51" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="521">
+          <caret line="85" column="29" lean-forward="true" selection-start-line="85" selection-start-column="29" selection-end-line="85" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/bean/Notify.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="47" column="5" lean-forward="true" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+          <folding>
+            <element signature="e#580#581#0" expanded="true" />
+            <element signature="e#615#616#0" expanded="true" />
+            <element signature="e#661#662#0" expanded="true" />
+            <element signature="e#682#683#0" expanded="true" />
+            <element signature="e#722#723#0" expanded="true" />
+            <element signature="e#751#752#0" expanded="true" />
+            <element signature="e#780#781#0" expanded="true" />
+            <element signature="e#800#801#0" expanded="true" />
+            <element signature="e#842#843#0" expanded="true" />
+            <element signature="e#869#870#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/newpost.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1622">
+          <caret line="54" column="4" lean-forward="true" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/bean/Comment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xk/bbs/controller/HomeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="571">
+          <caret line="263" lean-forward="true" selection-start-line="263" selection-end-line="263" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/postdetail.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="140" column="70" lean-forward="true" selection-start-line="140" selection-start-column="70" selection-end-line="140" selection-end-column="70" />
         </state>
       </provider>
     </entry>

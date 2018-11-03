@@ -30,7 +30,7 @@ public class PostServiceImpl extends BaseDaoImpl<Post> implements PostService {
     }
 
     @Override
-    public Post findPostById(Long id) {
+    public Post findPostById(Object id) {
 //        Post post = (Post)getById(id);
 //        Post post = (Post)getSession().createQuery("from Post p where p.id = "+id).uniqueResult();
         return (Post)getSession().createQuery("from Post p where p.id = "+id).uniqueResult(); //当确定返回的实例只有一个或者null时 用uniqueResult()方法

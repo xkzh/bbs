@@ -71,7 +71,7 @@ body {
 	$(function() {
 		$(".login").click(function() {
 			if($("#email").val() == "" && $("#password").val() == ""){
-                tip("请先登录")
+                tip("请输入账号和密码")
                 return;
 			}
             console.log("password val:   "+$("#password").val());

@@ -3,12 +3,11 @@ package com.xk.bbs.controller;
 
 import com.xk.bbs.bean.*;
 import com.xk.bbs.bean.base.BaseResult;
-import com.xk.bbs.service.CommentService;
-import com.xk.bbs.service.PostService;
-import com.xk.bbs.service.PostTypeService;
+import com.xk.bbs.service.*;
 import com.xk.bbs.util.DateUtil;
 import org.apache.http.util.TextUtils;
 import org.apache.log4j.Logger;
+import org.omg.PortableInterceptor.INACTIVE;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +20,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Controller
 public class HomeController {
@@ -37,6 +38,12 @@ public class HomeController {
 
     @Resource
     CommentService commentService;
+
+    @Resource
+    UserService userService;
+
+    @Resource
+    NotifyService notifyService;
 
     /**
      * 跳转到主页
@@ -143,6 +150,15 @@ public class HomeController {
         return "newpost";
     }
 
+    /**
+     * 发帖
+     * @param alias
+     * @param typeId
+     * @param title
+     * @param url
+     * @param content
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/newpost",method = RequestMethod.POST)
     public BaseResult newpost(@RequestParam("alias") String alias,
@@ -150,12 +166,6 @@ public class HomeController {
                               @RequestParam("title") String title,
                               @RequestParam("url") String url,
                               @RequestParam("content") String content){
-
-        log.error(TAG+" newpost() method alias: "+alias);
-        log.error(TAG+" newpost() method typeId: "+typeId);
-        log.error(TAG+" newpost() method title: "+title);
-        log.error(TAG+" newpost() method url: "+url);
-        log.error(TAG+" newpost() method content: "+content);
 
         HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
         User user = (User) request.getSession().getAttribute("curr_user");
@@ -178,4 +188,76 @@ public class HomeController {
         return BaseResult.success(post);
     }
 
+    /**
+     * 对帖子发表评论
+     * @param postId
+     * @param content
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/comment",method = RequestMethod.POST)
+    public BaseResult comment(@RequestParam("postId") String postId,@RequestParam("content") String content){
+
+        log.error(TAG+" comment() method alias: "+postId);
+        log.error(TAG+" comment() method typeId: "+content);
+        HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+        User sendUser = (User) request.getSession().getAttribute("curr_user");
+        // TODO 帖子里实体 评论数+1，更新评论的时间
+        // TODO 如果有@的用户，找出来保存到t_表里
+        // 回复数加1
+        Post post = postService.findPostById(postId+"");
+        post.setCommentsnum(post.getCommentsnum() + 1);
+        post.setLastcommentstime(DateUtil.getNow());
+        postService.update(post);
+
+        // 找出@用户
+        String reg = "@\\w+\\s";
+        Pattern p = Pattern.compile(reg);
+        Matcher m = p.matcher(content);
+
+        if (!m.find(0)) {
+            Notify notify = new Notify();
+            notify.setMessage("<a href=${pageContext.request.contextPath}/account-info?u="
+                    + sendUser.getNickname() + "'>"
+                    + sendUser.getNickname()
+                    + "</a>在您的帖子<a href=/post.do?id=" + post.getId()
+                    + "'>" + post.getTitle() + "</a>中回复了信息，快去查看吧！");
+            notify.setUser_id(sendUser.getId());
+            notify.setUnread(false);
+            notifyService.save(notify);
+        } else {
+            do {
+                String nickname = m.group();
+                content = content.replace(nickname, "<a href=/user.do?u="
+                        + nickname.substring(1).trim() + "'>" + nickname
+                        + "</a>");
+
+                nickname = nickname.substring(1);
+                // 查找@的人
+                User user = userService.findUserByNickname(nickname.trim());
+                if (user != null) {
+                    Notify notify = new Notify();
+                    notify.setMessage("<a href=${pageContext.request.contextPath}/account-info?u="
+                            + user.getNickname() + "'>"
+                            + user.getNickname()
+                            + "</a>在帖子<a href=/post.do?id=" + post.getId()
+                            + "'>" + post.getTitle() + "</a>中提到了你");
+                    notify.setUser_id(user.getId());
+                    notify.setUnread(false);
+                    notifyService.save(notify);
+                }
+            }while (m.find()) ;
+        }
+        Comment comment = new Comment();
+        try {
+            comment.setPost_id(Integer.valueOf(postId));
+            comment.setContent(content);
+            comment.setUser(sendUser);
+            comment.setCreatetime(DateUtil.getNow());
+            commentService.save(comment);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return BaseResult.success(comment);
+    }
 }

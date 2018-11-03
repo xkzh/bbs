@@ -120,6 +120,7 @@ body{
 }
 .post .post-content {
   line-height: 1.5;
+  word-break: normal;
 }
 .ref{
   margin-bottom: 15px;
