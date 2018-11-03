@@ -23,7 +23,7 @@
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
-		<a href="newpost.do?t=${postType.alias}" class="btn btn-success pull-left">我要发布</a>
+		<a href="${pageContext.request.contextPath}/newpost?t=${postType.alias}" class="btn btn-success pull-left">我要发布</a>
 	</div>
 
 	<div class="container content">

@@ -13,7 +13,7 @@
 <body>
 <%@ include file="include/top.jsp"%>
 	<div class="container content">
-		<a href="${pageContext.request.contextPath}/home" class="pull-right btn"><i class="icon-share-alt"></i> Go back</a>
+		<a href="${pageContext.request.contextPath}/home?p=1" class="pull-right btn"><i class="icon-share-alt"></i> Go back</a>
 	</div>
 
 <div class="container content main">

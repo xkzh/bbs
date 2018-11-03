@@ -11,7 +11,7 @@
 </head>
 <body>
 <%@ include file="include/top.jsp" %>
-################ @@ ${pageContext.request.contextPath} @@
+
 <div class="container content toolbar">
     <a href="#" class="btn">全部</a>&nbsp;&nbsp;&nbsp;&nbsp;
     <c:forEach items="${typeList }" var = "tl">
