@@ -102,6 +102,12 @@
 			<legend>头像设置</legend>
 			<img src="http://www.gravatar.com/avatar/${user.pic }?s=80&d=mm&r=g" alt="" class="img-circle">
 			头像服务采用<a href="http://en.gravatar.com/">Gravatar</a>服务，请到该站点进行设置
+			<<br/>
+			<form  id="uploadForm" class="form-horizontal"  action="${pageContext.request.contextPath}/uploadavatar" method="post"  enctype="multipart/form-data">
+				<input id="fileUpLoad" type="file" name="file">
+				<button type="button" id="uploadBtn" class="btn">上传</button>
+			</form>
+
 		</form>
 
 		<form class="form-horizontal fm"id="fm2">
@@ -140,6 +146,39 @@
 	<script src="${pageContext.request.contextPath}/static/js/common.js"></script>
 	<script>
 		$(function(){
+
+            $("#uploadBtn").click(function(){
+                console.log("---#####----")
+                // $("#uploadForm").submit();
+
+                var file = checkFile();
+                if (!file) {
+                    alert('请先选择文件');
+                    return false;
+                };
+
+                // 构建form数据
+                var formFile = new FormData();
+                formFile.append("action", "uploadavatar");
+                //把文件放入form对象中
+                formFile.append("file", file);
+
+
+                $.ajax({
+                    url:getRootPath()+"/uploadavatar",
+                    type:"post",
+                    dataType:"json",
+                    cache: false,//上传文件无需缓存
+                    processData: false,//用于对data参数进行序列化处理 这里必须false
+                    contentType: false, //必须
+					data:formFile,
+                    success:function(data){
+                        console.log("data:  "+JSON.stringify(data));
+
+                    }
+				});
+			});
+
 			$("#fmbtn").click(function(){
 			    // $("#fm").submit();
 				// TODO ajax 请求
@@ -278,6 +317,21 @@
                     $("#tip-alert").hide();
                 }, 3000);
             }
+
+            // 检测是否选择文件，如果选择，返回文件对象;如果没选择，返回false
+            function checkFile(){
+                // 获取文件对象(该对象的类型是[object FileList]，其下有个length属性)
+                var fileList = $('#fileUpLoad')[0].files;
+
+                // 如果文件对象的length属性为0，就是没文件
+                if (fileList.length === 0) {
+                    console.log('没选择文件');
+                    return false;
+                };
+                return fileList[0];
+            };
+
+
 		});
 	</script>
 </body>

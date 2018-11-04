@@ -12,11 +12,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -376,6 +380,12 @@ public class HomeController {
         return BaseResult.success(user);
     }
 
+    /***
+     * 账户设置重置密码
+     * @param oldpassword
+     * @param password
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/resetpassword",method = RequestMethod.POST)
     public BaseResult resetPassword(@RequestParam("oldpassword") String oldpassword,
@@ -399,6 +409,42 @@ public class HomeController {
         }else{
             return BaseResult.instance(0,"原始密码错误");
         }
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/uploadavatar",method = RequestMethod.POST)
+    public BaseResult upload(@RequestParam("file") CommonsMultipartFile file){ // CommonsMultipartFile
+
+        log.error(TAG+" upload() method ");
+        try {
+            log.error(TAG+" upload() method fileName："+file.getOriginalFilename());
+            HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+            ServletContext servletContext = request.getServletContext();
+             //获取服务器下的upload目录
+            String realPath = servletContext.getRealPath("/upload");
+            log.error(TAG+" upload() method realPath："+realPath);
+            File filePath = new File(realPath);
+            log.error(TAG+" upload() method filePath："+filePath.getAbsolutePath());
+            //如果目录不存在，则创建该目录
+            if (!filePath.exists()) {
+                filePath.mkdir();
+             }
+
+            long  startTime = System.currentTimeMillis();
+
+            String path = realPath+new Date().getTime()+file.getOriginalFilename();
+
+            File newFile=new File(path);
+            //通过CommonsMultipartFile的方法直接写文件（注意这个时候）
+            file.transferTo(newFile);
+            long  endTime = System.currentTimeMillis();
+            log.error(TAG+" upload() method 文件上传时长："+String.valueOf(endTime-startTime)+"ms");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return BaseResult.instance(0,"上传失败!");
+
     }
 
 }
