@@ -154,7 +154,7 @@ public class User implements Serializable {
     }
 
     public String getLastip() {
-        return lastip;
+        return TextUtils.isEmpty(lastip) ? "" : lastip;
     }
 
     public void setLastip(String lastip) {
@@ -178,7 +178,7 @@ public class User implements Serializable {
     }
 
     public String getRole() {
-        return role;
+        return TextUtils.isEmpty(role) ? "" : role;
     }
 
     public void setRole(String role) {

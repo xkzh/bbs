@@ -10,9 +10,9 @@
 <div class="navbar navbar-static-top">
 	<div class="navbar-inner">
 		<div class="container">
-			<a class="brand" href="home.do">BBS-ReWork</a>
+			<a class="brand" href="${pageContext.request.contextPath}/home?p=1">BBS-ReWork</a>
 			<ul class="nav pull-right">
-				<li><a href="home.do"><i class="icon-home"></i> 首页</a></li>
+				<li><a href="${pageContext.request.contextPath}/home?p=1"><i class="icon-home"></i> 首页</a></li>
 				<c:if test="${sessionScope.curr_user.role =='admin'}">
 					<li><a href="admin.do"><i class="icon-cog"></i> 用户管理
 						<%--<c:if test="<%=notesNum != 0 && !nowpage%>">
@@ -30,8 +30,8 @@
 						</c:if>
 					</a>
 					<ul aria-labelledby="drop2" role="menu" class="dropdown-menu">
-						<li role="presentation"><a href="account-info.do?u=${curr_user.nickname }" tabindex="-1" role="menuitem">个人主页</a></li>
-						<li role="presentation"><a href="setting.do" tabindex="-1" role="menuitem">账号设置</a></li>
+						<li role="presentation"><a href="${pageContext.request.contextPath}/account-info?p=1&u=${curr_user.nickname }" tabindex="-1" role="menuitem">个人主页</a></li>
+						<li role="presentation"><a href="${pageContext.request.contextPath}/account-setting" tabindex="-1" role="menuitem">账号设置</a></li>
 						<li role="presentation"><a href="notify.do" tabindex="-1" role="menuitem">通知中心
 							<c:if test="<%=n != 0 %>">
 								<span class="badge badge-important"><%=n %></span>

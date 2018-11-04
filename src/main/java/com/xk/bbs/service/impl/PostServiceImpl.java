@@ -36,4 +36,9 @@ public class PostServiceImpl extends BaseDaoImpl<Post> implements PostService {
         return (Post)getSession().createQuery("from Post p where p.id = "+id).uniqueResult(); //当确定返回的实例只有一个或者null时 用uniqueResult()方法
     }
 
+    @Override
+    public PageBean findPostByUserId(int page,Object userId) {
+        return getPageBean(page,new HqlHelper(Post.class).addCondition("o.user.id = "+userId+" order by createtime desc"));
+    }
+
 }

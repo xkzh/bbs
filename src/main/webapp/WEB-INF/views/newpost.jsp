@@ -23,7 +23,7 @@
 	</div>
 
 	<div class="container content main">
-		<form class="fm" action="newpost.do" method="post">
+		<form>
 			<div id="result_tip" class="alert alert-error" class="span10"></div>
 			<fieldset>
 				<legend>发布新帖子:</legend>

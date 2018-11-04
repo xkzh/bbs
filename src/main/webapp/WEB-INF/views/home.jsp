@@ -35,10 +35,10 @@
                     <a href="${pageContext.request.contextPath}/postdetail?id=${pl.id}">${pl.title}</a>
                 </h4>
               <small>
-                    <a href="#">discuss(${pl.commentsnum})</a> / <a href="/account-info.do?u=${pl.user.nickname}">@${pl.user.nickname}</a>
+                    <a href="#">discuss(${pl.commentsnum})</a> / <a href="/account-info?p=1&u=${pl.user.nickname}">@${pl.user.nickname}</a>
                         ${pl.likenum} <i class="icon-heart-empty" style="color:red;"></i>
                     &nbsp;&nbsp;${pl.lastcommentstime}
-                    <span class="label label-inverse" style="background-color:${pl.postType.color}"><a href="${pageContext.request.contextPath}/go.do?t=${pl.postType.alias}">${pl.postType.name}</a></span>
+                    <span class="label label-inverse" style="background-color:${pl.postType.color}"><a href="${pageContext.request.contextPath}/posttype?p=1&t=${pl.postType.alias}">${pl.postType.name}</a></span>
                 </small>
             </li>
         </c:forEach>

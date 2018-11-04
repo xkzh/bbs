@@ -4,11 +4,9 @@ package com.xk.bbs.controller;
 import com.xk.bbs.bean.*;
 import com.xk.bbs.bean.base.BaseResult;
 import com.xk.bbs.service.*;
-import com.xk.bbs.util.DateUtil;
+import com.xk.bbs.util.CommonUtil;
 import org.apache.http.util.TextUtils;
 import org.apache.log4j.Logger;
-import org.omg.PortableInterceptor.INACTIVE;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -53,7 +51,7 @@ public class HomeController {
      */
     @RequestMapping(value = "/home",method = RequestMethod.GET)
     public String main(@RequestParam("p") String p, Model model){
-        log.error("  ###  p:  "+p);
+        log.error(TAG+" main() method  p:  "+p);
         try {
             PageBean pageBean = postService.findAllPost(TextUtils.isEmpty(p) ? 1 : Integer.valueOf(p));
             List<PostType> typeList = postTypeService.findAllPostType();
@@ -182,7 +180,7 @@ public class HomeController {
         post.setUrl(url);
         post.setContent(content);
         post.setUser(user);
-        post.setLastcommentstime(DateUtil.getNow());
+        post.setLastcommentstime(CommonUtil.getNow());
         postService.save(post);
         log.error(TAG+" newpost() method post: "+post.toString());
         return BaseResult.success(post);
@@ -207,7 +205,7 @@ public class HomeController {
         // 回复数加1
         Post post = postService.findPostById(postId+"");
         post.setCommentsnum(post.getCommentsnum() + 1);
-        post.setLastcommentstime(DateUtil.getNow());
+        post.setLastcommentstime(CommonUtil.getNow());
         postService.update(post);
 
         // 找出@用户
@@ -217,10 +215,10 @@ public class HomeController {
 
         if (!m.find(0)) {
             Notify notify = new Notify();
-            notify.setMessage("<a href=${pageContext.request.contextPath}/account-info?u="
+            notify.setMessage("<a href=${pageContext.request.contextPath}/account-info?p=1&u="
                     + sendUser.getNickname() + "'>"
                     + sendUser.getNickname()
-                    + "</a>在您的帖子<a href=/post.do?id=" + post.getId()
+                    + "</a>在您的帖子<a href=${pageContext.request.contextPath}/postdetail?id=" + post.getId()
                     + "'>" + post.getTitle() + "</a>中回复了信息，快去查看吧！");
             notify.setUser_id(sendUser.getId());
             notify.setUnread(false);
@@ -237,10 +235,10 @@ public class HomeController {
                 User user = userService.findUserByNickname(nickname.trim());
                 if (user != null) {
                     Notify notify = new Notify();
-                    notify.setMessage("<a href=${pageContext.request.contextPath}/account-info?u="
+                    notify.setMessage("<a href=${pageContext.request.contextPath}//account-info?p=1&u="
                             + user.getNickname() + "'>"
                             + user.getNickname()
-                            + "</a>在帖子<a href=/post.do?id=" + post.getId()
+                            + "</a>在帖子<a href=/postdetail?id=" + post.getId()
                             + "'>" + post.getTitle() + "</a>中提到了你");
                     notify.setUser_id(user.getId());
                     notify.setUnread(false);
@@ -253,11 +251,154 @@ public class HomeController {
             comment.setPost_id(Integer.valueOf(postId));
             comment.setContent(content);
             comment.setUser(sendUser);
-            comment.setCreatetime(DateUtil.getNow());
+            comment.setCreatetime(CommonUtil.getNow());
             commentService.save(comment);
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
         return BaseResult.success(comment);
     }
+
+
+    /**
+     * 跳转到个人主页界面
+     * @param username
+     * @param p
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/account-info",method = RequestMethod.GET)
+    public String account_info(@RequestParam("u") String username,@RequestParam("p") String p,Model model){
+        log.error(TAG+" account_info() method username:   "+username);
+        log.error(TAG+" account_info() method p:   "+p);
+        if(TextUtils.isEmpty(username)){
+            try {
+                HttpServletResponse response = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getResponse();
+                response.sendError(404);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        User user = userService.findUserByNickname(username);
+        if(user == null){
+            try {
+                HttpServletResponse response = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getResponse();
+                response.sendError(404);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        try {
+            int page = Integer.valueOf(p);
+            PageBean pageBean = postService.findPostByUserId(page,user.getId());
+            log.error(TAG+"  account_info() method pageBean.toString():   "+pageBean.toString());
+            model.addAttribute("pageBean",pageBean);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        model.addAttribute("user",user);
+        return "account-info";
+    }
+
+
+    /**
+     * 跳转到账户设置界面
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/account-setting",method = RequestMethod.GET)
+    public String account_setting(Model model){
+        HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+        HttpServletResponse response = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getResponse();
+        User sessionUser = (User) request.getSession().getAttribute("curr_user");
+        User user = userService.findUserByNickname(sessionUser.getNickname());
+        if(user == null){
+            try {
+                response.sendError(404);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        model.addAttribute("user",user);
+        return "account-setting";
+    }
+
+    /**
+     * 修改用户信息
+     * @param userid
+     * @param email
+     * @param qianming
+     * @param qq
+     * @param twitter
+     * @param github
+     * @param weibo
+     * @param blog
+     * @param location
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/account-setting",method = RequestMethod.POST)
+    public BaseResult account_setting(@RequestParam("userid") String userid,
+                                      @RequestParam("email") String email,
+                                      @RequestParam("qianming") String qianming,
+                                      @RequestParam("qq") String qq,
+                                      @RequestParam("twitter") String twitter,
+                                      @RequestParam("github") String github,
+                                      @RequestParam("weibo") String weibo,
+                                      @RequestParam("blog") String blog,
+                                      @RequestParam("location") String location){
+
+
+        log.error(TAG+" account_setting() method userid: "+userid);
+        log.error(TAG+" account_setting() method email: "+email);
+        log.error(TAG+" account_setting() method qianming: "+qianming);
+        log.error(TAG+" account_setting() method qq: "+qq);
+        log.error(TAG+" account_setting() method twitter: "+twitter);
+        log.error(TAG+" account_setting() method github: "+github);
+        log.error(TAG+" account_setting() method weibo: "+weibo);
+        log.error(TAG+" account_setting() method blog: "+blog);
+        log.error(TAG+" account_setting() method location: "+location);
+
+        User user = new User();
+        user.setId(Integer.valueOf(userid));
+        user.setEmail(email);
+        user.setQianming(qianming);
+        user.setQq(qq);
+        user.setTwitter(twitter);
+        user.setGithub(github);
+        user.setWeibo(weibo);
+        user.setBlog(blog);
+        user.setLocation(location);
+        userService.update(user);
+
+        return BaseResult.success(user);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/resetpassword",method = RequestMethod.POST)
+    public BaseResult resetPassword(@RequestParam("oldpassword") String oldpassword,
+                                    @RequestParam("password") String password){
+
+        HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+        User sessionUser = (User) request.getSession().getAttribute("curr_user");
+        User user = userService.findUserByNickname(sessionUser.getNickname());
+
+        log.error(TAG+" resetPassword() method oldpassword: "+oldpassword);
+        log.error(TAG+" resetPassword() method password: "+password);
+
+        if(user == null){
+            return BaseResult.instance(0,"用户信息参数有误");
+        }
+
+        if(user.getPassword().equals(CommonUtil.SHA1(oldpassword))){
+            user.setPassword(CommonUtil.SHA1(oldpassword));
+            userService.updatePassword(user);
+            return BaseResult.success();
+        }else{
+            return BaseResult.instance(0,"原始密码错误");
+        }
+    }
+
 }

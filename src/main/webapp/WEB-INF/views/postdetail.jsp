@@ -29,7 +29,7 @@
 			</c:if>
 			<div class="author">
 				<img class="img-circle" src="http://www.gravatar.com/avatar/${post.user.pic}?s=30&d=mm&r=g" alt="">
-				created by <a href="/account-info.do?u=${post.user.nickname}">${post.user.nickname}</a>
+				created by <a href="${pageContext.request.contextPath}/account-info?p=1&u=${post.user.nickname}">${post.user.nickname}</a>
 				  @ ${fn:substring(post.createtime,0,19)}
 				  &nbsp;&nbsp;${post.viewnum}次浏览&nbsp;&nbsp;
 				<small class="pull-right">
@@ -43,7 +43,7 @@
 			</div>
 			<div class="response-fm">
 				
-				<form id="fm" action="comment.do" method="post">
+				<form>
 					<fieldset>
 						<h4>我要回复</h4>
 						<input id = "postid" type="hidden" name="postid" value="${post.id}"/>
@@ -71,7 +71,7 @@
 							<div class="cm-author">
 								<img class="img-circle" src="http://www.gravatar.com/avatar/${c.user.pic }?s=30&d=mm&r=g" alt="">
 								&nbsp;&nbsp;
-								<a href="/account-info.do?u=${c.user.nickname}">@${c.user.nickname}</a>
+								<a href="/account-info?p=1&u=${c.user.nickname}">@${c.user.nickname}</a>
 								&nbsp;&nbsp;
 								# ${fn:substring(c.createtime,0,19)}
 								&nbsp;&nbsp;
@@ -126,16 +126,11 @@
 						    console.log("data:  "+JSON.stringify(data));
 							if(data.code == 200){
                                 content:$("#content").val("");
-                                console.log("data.data.user.pic:  "+data.data.user.pic);
-                                console.log("data.user.nickname:  "+data.data.user.nickname);
-                                console.log("data.data.createtime:  "+data.data.createtime);
-                                console.log("data.data.post_id:  "+data.data.post_id);
-                                console.log("data.data.id:  "+data.data.id);
                                 var html = "<div class=\"comment\">\n" +
                                     "\t\t\t\t\t\t\t<div class=\"cm-author\">\n" +
                                     "\t\t\t\t\t\t\t\t<img class=\"img-circle\" src=\"http://www.gravatar.com/avatar/"+data.data.user.pic+"?s=30&d=mm&r=g\" alt=\"\">\n" +
                                     "\t\t\t\t\t\t\t\t&nbsp;&nbsp;\n" +
-                                    "\t\t\t\t\t\t\t\t<a href=\"/account-info.do?u="+data.data.user.nickname+"\">@"+data.data.user.nickname+"</a>\n" +
+                                    "\t\t\t\t\t\t\t\t<a href=\"/account-info?p=1&u="+data.data.user.nickname+"\">@"+data.data.user.nickname+"</a>\n" +
                                     "\t\t\t\t\t\t\t\t&nbsp;&nbsp;\n" +
                                     "\t\t\t\t\t\t\t\t# "+data.data.createtime+"\n" +
                                     "\t\t\t\t\t\t\t\t&nbsp;&nbsp;\n" +

@@ -24,7 +24,7 @@ body {
 	{
 	width: 365px;
 }
-#tip-login-first{
+#tip-alert{
 	display: none;
 }
 </style>
@@ -39,7 +39,7 @@ body {
 				</h3>
 				<form action="${pageContext.request.contextPath}/login" method="post" class="fm">
 
-					<div id="tip-login-first" class="alert alert-error">
+					<div id="tip-alert" class="alert alert-error">
 
 					</div>
 
@@ -129,10 +129,10 @@ body {
 			});
 
 		function tip(text) {
-            $("#tip-login-first").show();
-            $("#tip-login-first").html(text);
+            $("#tip-alert").show();
+            $("#tip-alert").html(text);
             setTimeout(function () {
-                $("#tip-login-first").hide();
+                $("#tip-alert").hide();
             }, 3000);
         }
 	});

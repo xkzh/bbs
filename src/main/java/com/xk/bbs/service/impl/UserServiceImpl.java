@@ -17,7 +17,7 @@ public class UserServiceImpl  extends BaseDaoImpl<User> implements UserService {
 
     @Override
     public User findByEmailAndPwd(String email, String pwd) {
-        return (User)getSession().createQuery("FROM User where email = ?0 and password = ?1 ")
+        return (User)getSession().createQuery("from User where email = ?0 and password = ?1 ")
                 .setParameter(0,email)
                 .setParameter(1,pwd)
                 .setFirstResult(0)
@@ -36,5 +36,11 @@ public class UserServiceImpl  extends BaseDaoImpl<User> implements UserService {
         return (User)getSession().createQuery("from User where nickname = ?0")
                 .setParameter(0,nickName)
                 .uniqueResult();
+    }
+
+    @Override
+    public void updatePassword(User user) {
+        update(user);
+//        getSession().createQuery("update User u set u.password = ?0 where u.nickname = ?1 ").setParameter(0,password).setParameter(1,nickname).uniqueResult();
     }
 }

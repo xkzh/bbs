@@ -11,4 +11,6 @@ public interface UserService extends BaseDao<User> {
 
     User findUserByNickname(String nickName);
 
+    void updatePassword(User user);
+
 }

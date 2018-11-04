@@ -12,7 +12,7 @@
 <body>
 	<%@ include file="include/top.jsp" %>
 	<div class="container content toolbar">
-		<a href="${pageContext.request.contextPath}/home" class="nolink">全部</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="${pageContext.request.contextPath}/home?p=1" class="nolink">全部</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		<c:forEach items="${typeList}" var = "tl">
 			<c:choose>
 				<c:when test="${postType.id == tl.id}">
@@ -42,7 +42,7 @@
 					 <a href="/postdetail?id=${pl.id}">${pl.title}</a>
 				</h4>
 				<small>
-					<a href="#">discuss(${pl.commentsnum})</a> / <a href="/account-info.do?u=${pl.user.nickname}">@${pl.user.nickname}</a>
+					<a href="#">discuss(${pl.commentsnum})</a> / <a href="//account-info?p=1&u=${pl.user.nickname}">@${pl.user.nickname}</a>
 					 ${pl.likenum} <i class="icon-heart-empty" style="color:red;"></i> 
 					 &nbsp;&nbsp;${pl.lastcommentstime}  
 					 <span class="label label-inverse" style="background-color:${pl.postType.color}"><a href="${pageContext.request.contextPath}/posttype?t=${pl.postType.alias}">${pl.postType.name}</a></span>

@@ -12,4 +12,6 @@ public interface PostService extends BaseDao<Post> {
 
     Post findPostById(Object id);
 
+    PageBean findPostByUserId(int page,Object userId);
+
 }
