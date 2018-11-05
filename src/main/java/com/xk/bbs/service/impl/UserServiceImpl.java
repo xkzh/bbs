@@ -26,14 +26,17 @@ public class UserServiceImpl  extends BaseDaoImpl<User> implements UserService {
 
     @Override
     public User findUserById(String id) {
-        return (User)getSession().createQuery("from User where ic = ?0")
+        return (User)getSession().createQuery("from User where id = ?0")
                 .setParameter(0,id)
                 .uniqueResult();
     }
 
     @Override
     public User findUserByNickname(String nickName) {
-        return (User)getSession().createQuery("from User where nickname = ?0")
+
+        log.error(" findUserByNickname() method nickName:   "+nickName);
+        // 中文搜不到结果
+        return (User)getSession().createQuery("from User u where u.nickname = ?0")
                 .setParameter(0,nickName)
                 .uniqueResult();
     }

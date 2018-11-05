@@ -181,6 +181,9 @@ public class HomeController {
         if(postType == null){
             return BaseResult.instance(0,"帖子类别参数有误");
         }
+
+        log.error(TAG+" newpost() method title: "+title);
+        log.error(TAG+" newpost() method content: "+content);
         Post post = new Post();
         post.setPostType(postType);
         post.setTitle(title);
@@ -288,6 +291,7 @@ public class HomeController {
         }
 
         User user = userService.findUserByNickname(username);
+        log.error(TAG+" account_info() method user:   "+user);
         if(user == null){
             try {
                 HttpServletResponse response = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getResponse();
