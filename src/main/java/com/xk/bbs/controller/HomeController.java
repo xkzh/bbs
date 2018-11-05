@@ -16,8 +16,10 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletContext;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
@@ -413,38 +415,50 @@ public class HomeController {
 
     @ResponseBody
     @RequestMapping(value = "/uploadavatar",method = RequestMethod.POST)
-    public BaseResult upload(@RequestParam("file") CommonsMultipartFile file){ // CommonsMultipartFile
+    public BaseResult upload(@RequestParam("file") CommonsMultipartFile file){
 
-        log.error(TAG+" upload() method ");
         try {
-            log.error(TAG+" upload() method fileName："+file.getOriginalFilename());
             HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
-            ServletContext servletContext = request.getServletContext();
-             //获取服务器下的upload目录
-            String realPath = servletContext.getRealPath("/upload");
-            log.error(TAG+" upload() method realPath："+realPath);
+            String realPath = request.getServletContext().getRealPath("\\upload\\"); // /resources/upload/
+
             File filePath = new File(realPath);
-            log.error(TAG+" upload() method filePath："+filePath.getAbsolutePath());
+
             //如果目录不存在，则创建该目录
             if (!filePath.exists()) {
                 filePath.mkdir();
-             }
+            }
 
             long  startTime = System.currentTimeMillis();
-
-            String path = realPath+new Date().getTime()+file.getOriginalFilename();
-
-            File newFile=new File(path);
+            String uploadFilePath = filePath.getAbsolutePath() +"\\"+ new Date().getTime()+"_"+file.getOriginalFilename();
+            File newFile = new File(uploadFilePath);
             //通过CommonsMultipartFile的方法直接写文件（注意这个时候）
             file.transferTo(newFile);
             long  endTime = System.currentTimeMillis();
             log.error(TAG+" upload() method 文件上传时长："+String.valueOf(endTime-startTime)+"ms");
-        } catch (IOException e) {
+
+            User sessionUser = (User) request.getSession().getAttribute("curr_user");
+            User user = userService.findUserByNickname(sessionUser.getNickname());
+            if(user == null){
+                return BaseResult.instance(0,"用户信息参数有误");
+            }
+            log.error(TAG+" upload() method 文件存储路径： "+uploadFilePath);
+            // 保存到数据库
+            user.setPic(uploadFilePath);
+            // TODO 更新数据库没有操作
+//            userService.updateAvatar(user);
+            log.error(TAG+" upload() method user.toString()： "+user.toString());
+            return BaseResult.success();
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
         return BaseResult.instance(0,"上传失败!");
-
     }
+
+
+/*
+    // 清除Session
+    session.invalidate();
+*/
+
 
 }

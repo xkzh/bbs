@@ -43,4 +43,9 @@ public class UserServiceImpl  extends BaseDaoImpl<User> implements UserService {
         update(user);
 //        getSession().createQuery("update User u set u.password = ?0 where u.nickname = ?1 ").setParameter(0,password).setParameter(1,nickname).uniqueResult();
     }
+
+    @Override
+    public void updateAvatar(User user) {
+        update(user);
+    }
 }

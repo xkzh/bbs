@@ -17,9 +17,6 @@
 	</bean>
 	
 	<!-- 资源映射 -->
-	<!--
-	TODO xk 2018-10-4 17:31:35 配置报错
--->
 	<mvc:resources location="/static/" mapping="/static/**" />
 	
 	<!-- 定义文件上传解析器 -->
@@ -32,5 +29,15 @@
 		<property name="maxInMemorySize" value="4096" />
 	</bean>
 
+
+
+
+	<!-- 拦截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.xk.bbs.interceptor.LoginInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 </beans>

@@ -4,6 +4,7 @@ package com.xk.bbs.controller;
 import com.xk.bbs.bean.User;
 import com.xk.bbs.bean.base.BaseResult;
 import com.xk.bbs.bean.base.ResponseCode;
+import com.xk.bbs.interceptor.LoginInterceptor;
 import com.xk.bbs.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginController {
 
     private static final Logger log = Logger.getLogger(LoginController.class);
-
+    String TAG = LoginController.class.getSimpleName();
     @Resource
     UserService userService;
 
@@ -32,9 +33,16 @@ public class LoginController {
      */
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public String login(){
-        log.error("跳转登录界面%%%%%%%%%%%%%%%%");
+        log.error(TAG+" login() method /  跳转登录界面################");
         return "login";
     }
+
+    @RequestMapping(value = "/login",method = RequestMethod.GET)
+    public String gologin(){
+        log.error(TAG+" gologin() method /login  跳转登录界面%%%%%%%%%%%%%%%%");
+        return "login";
+    }
+
 
     @ResponseBody
     @RequestMapping(value="/login",method = RequestMethod.POST)

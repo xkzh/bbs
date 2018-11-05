@@ -130,7 +130,7 @@ public class User implements Serializable {
     }
 
     public String getPic() {
-        return DigestUtils.md5Hex(this.email);
+        return TextUtils.isEmpty(pic) ? "" : pic;
     }
 
     public void setPic(String pic) {

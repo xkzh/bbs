@@ -13,4 +13,6 @@ public interface UserService extends BaseDao<User> {
 
     void updatePassword(User user);
 
+    void updateAvatar(User user);
+
 }

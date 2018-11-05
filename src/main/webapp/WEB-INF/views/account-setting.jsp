@@ -102,7 +102,7 @@
 			<legend>头像设置</legend>
 			<img src="http://www.gravatar.com/avatar/${user.pic }?s=80&d=mm&r=g" alt="" class="img-circle">
 			头像服务采用<a href="http://en.gravatar.com/">Gravatar</a>服务，请到该站点进行设置
-			<<br/>
+			<br/>
 			<form  id="uploadForm" class="form-horizontal"  action="${pageContext.request.contextPath}/uploadavatar" method="post"  enctype="multipart/form-data">
 				<input id="fileUpLoad" type="file" name="file">
 				<button type="button" id="uploadBtn" class="btn">上传</button>
