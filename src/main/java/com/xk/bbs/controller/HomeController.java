@@ -450,7 +450,7 @@ public class HomeController {
             // 保存到数据库
             user.setPic(uploadFilePath);
             // TODO 更新数据库没有操作
-//            userService.updateAvatar(user);
+            userService.updateAvatar(user);
             log.error(TAG+" upload() method user.toString()： "+user.toString());
             return BaseResult.success();
         } catch (Exception e) {
@@ -459,11 +459,21 @@ public class HomeController {
         return BaseResult.instance(0,"上传失败!");
     }
 
+    @RequestMapping(value = "/logout",method = RequestMethod.GET)
+    public String logout(){
+        try {
+            HttpServletResponse response = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getResponse();
+            HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+            // 清除Session
+            request.getSession().invalidate();
+//            response.sendRedirect("/login");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "login";
+    }
 
-/*
-    // 清除Session
-    session.invalidate();
-*/
+
 
 
 }

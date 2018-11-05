@@ -38,7 +38,7 @@
 							</c:if>
 						</a></li>
 						<li class="divider" role="presentation"></li>
-						<li role="presentation"><a href="logout.do" tabindex="-1" role="menuitem">安全退出</a></li>
+						<li role="presentation"><a href="${pageContext.request.contextPath}/logout" tabindex="-1" role="menuitem">安全退出</a></li>
 					</ul>
 				</li>
 			</ul>
