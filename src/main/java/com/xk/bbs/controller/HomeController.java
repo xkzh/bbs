@@ -63,6 +63,7 @@ public class HomeController {
             List<PostType> typeList = postTypeService.findAllPostType();
             log.error(TAG+" main() method pageBean.toString():   "+pageBean.toString());
             log.error(TAG+" main() method typeList.toString():   "+typeList.toString());
+            log.error(TAG+" main() method pageBean.getRecordList().size():   "+pageBean.getRecordList().size());
             model.addAttribute("pageBean",pageBean);
             model.addAttribute("typeList",typeList);
         } catch (NumberFormatException e) {

@@ -9,7 +9,7 @@ s *
  */
 public class Configuration {
 
-	public static int pageSize = 15;
+	public static int pageSize = 10;
 	
 
 	public static int getPageSize() {

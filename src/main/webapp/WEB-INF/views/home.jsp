@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/elusive-webfont.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/page/paging.css">
+
 </head>
 <body>
 <%@ include file="include/top.jsp" %>
@@ -47,7 +49,10 @@
 
 <div class="container">
     <c:if test="${pageBean.recordCount > 10}">
-        <div class="pagination pagination-right">
+        <div id="pageTool"></div>
+        <%--<div id="pageToolbar"></div>--%>
+
+        <%--<div class="pagination pagination-right">
             <ul>
                 <c:choose>
                     <c:when test="${pageBean.currentPage == 1 }">
@@ -69,7 +74,7 @@
                     </c:otherwise>
                     </c:choose>
             </ul>
-        </div>
+        </div>--%>
     </c:if>
 </div>
 
@@ -77,5 +82,24 @@
 <%@ include file="include/footer.jsp" %>
 <script src="${pageContext.request.contextPath}/static/js/jquery.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/common.js"></script>
+<script src="${pageContext.request.contextPath}/static/page/paging.js"></script>
+
+<script>
+    var page = new Paging();
+    page.init({	target: $('#pageTool'), pagesize: 10, count: ${pageBean.recordCount}, current:${pageBean.currentPage},callback: function (currentpage, size, pagecount) {
+            console.log(arguments)
+            // alert('当前第 ' + currentpage + '页,每页 ' + size + '条,总页数：' + pagecount + '页');
+            //动态设置总条数 https://github.com/tianxiangbing/paging
+            page.render({ count: pagecount, current: currentpage });
+            location.href = getRootPath() + "/home?p="+currentpage;
+
+            //如果你不用ajax分页，你可以直接在这里location.href='xxx.html?page='+pagecount 作跳转，这样的话，页面刷新后，你要传递current进来。
+        }
+    });
+
+
+</script>
+
 </body>
 </html>
